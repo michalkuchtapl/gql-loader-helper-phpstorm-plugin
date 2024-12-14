@@ -1,0 +1,14 @@
+<idea-plugin>
+  <id>dev.mikify.gqlqueryloader</id>
+  <name>GqlQueryLoader</name>
+  <vendor email="contact@mikify.dev" url="https://www.mikify.dev">Mikify</vendor>
+
+  <depends>com.jetbrains.php</depends>
+  <depends>com.intellij</depends>
+  <depends>com.intellij.modules.platform</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <gotoDeclarationHandler implementation="dev.mikify.gqlqueryloader.LoadQueryGotoDeclarationHandler"/>
+    <completion.contributor language="PHP" implementationClass="dev.mikify.gqlqueryloader.LoadQueryCompletionContributor"/>
+  </extensions>
+</idea-plugin>
