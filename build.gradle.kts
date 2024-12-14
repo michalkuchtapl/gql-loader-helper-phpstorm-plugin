@@ -20,6 +20,12 @@ dependencies {
 intellijPlatform {
   pluginConfiguration {
     version = "1.0"
+    description = "Small plugin to help with GQL Loader"
+    vendor {
+      name = "Mikify"
+      email = "contact@mikify.dev"
+      url = "https://mikify.dev"
+    }
 
     ideaVersion {
       sinceBuild = "243"
