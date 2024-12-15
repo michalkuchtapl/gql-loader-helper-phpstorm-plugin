@@ -19,8 +19,8 @@ dependencies {
 
 intellijPlatform {
   pluginConfiguration {
-    version = "1.0"
-    description = "Small plugin to help with GQL Loader"
+    version = "1.0.1"
+    description = "Small plugin that allows autocomplete for GQL Query Loader"
     vendor {
       name = "Mikify"
       email = "contact@mikify.dev"
