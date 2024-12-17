@@ -4,7 +4,6 @@ import com.intellij.codeInsight.completion.*
 import com.intellij.codeInsight.lookup.LookupElementBuilder
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.VirtualFile
-import com.intellij.psi.PsiElement
 import com.intellij.util.ProcessingContext
 
 class LoadQueryCompletionProvider : CompletionProvider<CompletionParameters>() {
@@ -19,7 +18,9 @@ class LoadQueryCompletionProvider : CompletionProvider<CompletionParameters>() {
         val baseDir: VirtualFile = project.baseDir ?: return
         val queriesDir: VirtualFile = baseDir.findFileByRelativePath("resources/queries") ?: return
 
-        val text = resultSet.prefixMatcher.prefix.trim('"', '\'', '(', ')')
+        val text = resultSet.prefixMatcher.prefix
+            .trim('"', '\'', '(', ')')
+            .replace('.', '/')
 
         // Determine the current directory based on the typed prefix
         val (currentDir, prefix) = resolveCurrentDirectoryAndPrefix(queriesDir, text)
@@ -29,7 +30,7 @@ class LoadQueryCompletionProvider : CompletionProvider<CompletionParameters>() {
             ?.filter { it.isValid && canShowElement(it) && matchesPrefix(it, prefix) }
             ?.forEach { child ->
                 var displayName = if (child.isDirectory)
-                    child.name + "/"
+                    child.name
                 else
                     child.nameWithoutExtension
 
@@ -44,9 +45,8 @@ class LoadQueryCompletionProvider : CompletionProvider<CompletionParameters>() {
                 if (dir.isNotEmpty()) {
                     displayName =  "$dir/$displayName"
                 }
-                println("name: $displayName")
 
-                resultSet.addElement(LookupElementBuilder.create(displayName))
+                resultSet.addElement(LookupElementBuilder.create(displayName.replace('/', '.')))
             }
     }
 

@@ -19,7 +19,7 @@ dependencies {
 
 intellijPlatform {
   pluginConfiguration {
-    version = "1.0.1"
+    version = "1.0.3"
     description = "Small plugin that allows autocomplete for GQL Query Loader"
     vendor {
       name = "Mikify"
