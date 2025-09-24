@@ -12,14 +12,14 @@ repositories {
 
 dependencies {
   intellijPlatform {
-    phpstorm("2024.3.1")
+    phpstorm("2025.2")
     bundledPlugin("com.jetbrains.php")
   }
 }
 
 intellijPlatform {
   pluginConfiguration {
-    version = "1.0.3"
+    version = "1.0.6"
     description = "Small plugin that allows autocomplete for GQL Query Loader"
     vendor {
       name = "Mikify"
@@ -29,7 +29,6 @@ intellijPlatform {
 
     ideaVersion {
       sinceBuild = "243"
-      untilBuild = "243.*"
     }
   }
 
